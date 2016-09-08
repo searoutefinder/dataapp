@@ -8,6 +8,7 @@
     <li>Slim Micro Framework</li>
     <li>Backbone.js</li>
     <li>jQuery</li>
+    <li>Leaflet web mapping framework</li>
     <li>Bootstrap 3</li>
 </ul>
 <h2>Description</h2>
