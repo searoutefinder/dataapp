@@ -1,6 +1,5 @@
 # The Data App
 Project for interactively displaying statistical data of multiple levels of Australian administrative areas
-<hr>
 <h2>Tech stack</h2>
 <ul>
     <li>Amazon EC2</li>
