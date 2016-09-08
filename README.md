@@ -1,5 +1,6 @@
 # The Data App
-Project for interactively displaying statistical data of multiple levels of Australian administrative areas
+<h2>Project for interactively displaying statistical data of multiple levels of Australian administrative areas</h2>
+![alt tag](https://github.com/searoutefinder/dataapp/raw/master/sh_github.png)
 <h2>Tech stack</h2>
 <ul>
     <li>Amazon EC2</li>
