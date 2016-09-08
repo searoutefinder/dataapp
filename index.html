@@ -1,0 +1,390 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Data App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/easy-button.css"/>
+        <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+        <link rel="stylesheet" href='css/leaflet.label.css'/>
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <nav class="navbar navbar-inverse navbar-static-top container" role="navigation" id="dataapp-header-bar"></nav>
+
+        <div id="dataapp-main" class="container"></div>
+		
+		<!-- TEMPLATES -->
+		
+		<script type="text/template" id="">
+		</script>
+		
+		<script type="text/template" id="tpl_tda_header">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="http://thedataapp.com/demo/images/logo.png"/>
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">FEATURES</a></li>
+                        <li><a href="#">PRICING</a></li>
+                        <li><a href="#">SCREENSHOTS</a></li>
+                        <li><a href="#">TESTIMONIALS</a></li>
+                        <li><a href="#">SUBSCRIBE</a></li>
+                    </ul>
+                </div>
+            </div>		
+		</script>		
+
+		<script type="text/template" id="tpl_tda_main">
+            <div class="row map-container">
+                <div id="dataapp-map"></div>
+				<div id="dataapp-loader"></div>
+            </div>
+            <div class="row">
+                <div id="dataapp-boxes">
+				
+                    <!-- Menu row in the head -->
+					<div class="row head-row" id="dataapp-control-bar"></div>
+					
+					<!-- Target area dropdown list -->
+                    <div class="row target-row" id="dataapp-target-list"></div>
+										
+					<!-- Comparison area dropdown list -->
+                    <div class="row comparison-row" id="dataapp-comparison-list"></div>
+					
+					<!-- Collapsible panels -->
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <!-- Results come here after stat calculation -->
+					</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="panel panel-default" id="dataapp-bottom">
+                    <div class="panel-heading">
+                        <div class="title">
+                            Data app bottom
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 footer-column">
+                                <h2>Heading</h2>
+                                <p>Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem Ipsum har vært bransjens standard for dummytekst helt siden 1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å lage et prøveeksemplar av en bok. Lorem Ipsum har tålt tidens tann usedvanlig godt, og har i tillegg til å bestå gjennom fem århundrer også tålt spranget over til elektronisk typografi uten vesentlige endringer. Lorem Ipsum ble gjort allment kjent i 1960-årene ved lanseringen av Letraset-ark med avsnitt fra Lorem Ipsum, og senere med sideombrekkingsprogrammet Aldus PageMaker som tok i bruk nettopp Lorem Ipsum for dummytekst.</p>
+                            </div>
+                            <div class="col-md-4 footer-column">
+                                <h2>How to use it</h2>
+                                <p>Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem Ipsum har vært bransjens standard for dummytekst helt siden 1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å lage et prøveeksemplar av en bok. Lorem Ipsum har tålt tidens tann usedvanlig godt, og har i tillegg til å bestå gjennom fem århundrer også tålt spranget over til elektronisk typografi uten vesentlige endringer. Lorem Ipsum ble gjort allment kjent i 1960-årene ved lanseringen av Letraset-ark med avsnitt fra Lorem Ipsum, og senere med sideombrekkingsprogrammet Aldus PageMaker som tok i bruk nettopp Lorem Ipsum for dummytekst.</p>
+                            </div>
+                            <div class="col-md-4 footer-column highlighted">
+                                <h2>More from TheDataApp</h2>
+                                <p>Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem Ipsum har vært bransjens standard for dummytekst helt siden 1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å lage et prøveeksemplar av en bok. Lorem Ipsum har tålt tidens tann usedvanlig godt, og har i tillegg til å bestå gjennom fem århundrer også tålt spranget over til elektronisk typografi uten vesentlige endringer. Lorem Ipsum ble gjort allment kjent i 1960-årene ved lanseringen av Letraset-ark med avsnitt fra Lorem Ipsum, og senere med sideombrekkingsprogrammet Aldus PageMaker som tok i bruk nettopp Lorem Ipsum for dummytekst.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>		
+		</script>		
+
+		<script type="text/template" id="tpl_tda_collapsible_results">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Comparison
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+						            <table class="table">														
+										<thead>
+										    <tr><td>Category</td><td>Value</td></tr>
+										</thead>
+                                        <tbody>										
+											<% _.each(comparison, function(entry){%>
+												<tr><td><%=entry.text%></td><td><%=entry.amt.toFixed(2)%></td></tr>
+											<%});%>
+										</tbody>
+									</table>	
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Target
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+						            <table class="table">														
+										<thead>
+										    <tr><td>Category</td><td>Value</td></tr>
+										</thead>
+                                        <tbody>										
+											<% _.each(target, function(entry){%>
+												<tr><td><%=entry.text%></td><td><%=entry.amt.toFixed(2)%></td></tr>
+											<%});%>
+										</tbody>
+									</table>	
+                                </div>
+                            </div>
+                        </div>		
+		</script>
+		
+		<script type="text/template" id="tpl_tda_layerswitch_modal">
+            <div class="modal fade" tabindex="-1" role="dialog" id="layerSwitchModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>You are about to change layers. This would clear all your prior selections. Do you want to proceed?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_layerchange_no">No</button>
+                            <button type="button" class="btn btn-primary" id="btn_layerchange_yes">Yes</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->		
+		</script>
+		
+		<script type="text/template" id="tpl_tda_controlbar">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 head-col" style="padding:5px 10px !important;">
+                <div class="col-xs-5 col-sm-5 col-md-6 col-lg-6" style="height:46px;">
+                    <p style="margin:0 !important;line-height:46px;">Actions</p>
+                </div>
+                <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6 text-center">
+                    <div class="btn-group" style="margin-top:6px;">
+                        <button type="button" class="btn btn-default">Select action</button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)" id="btn_comparison_clearall">Clear comparison areas</a></li>
+                            <li><a href="javascript:void(0)" id="btn_target_clearall">Clear target areas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 head-col target">
+			    <a href="#" id="btn-toggle-target">Target areas (<%=targCt%>)<i class="fa fa-list-alt pull-right btn-target-list-open"></i></a>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 head-col comparison">
+			    <a href="#" id="btn-toggle-comparison">Comparison areas (<%=compCt%>)<i class="fa fa-list-alt pull-right btn-comparison-list-open"></i></a>
+			</div>
+		</script>
+		
+		<script type="text/template" id="tpl_target_list">
+			<div id="list-target-areas">
+				<%if(areas.length>0){%>
+					<%_.each(areas, function(area){%>
+						<div class="panel panel-default">
+						  <div class="panel-body">
+							<%= area.name %>
+						  </div>
+						</div>	   
+					<%});%>
+				<%}%>	
+			</div>
+		</script>
+
+		<script type="text/template" id="tpl_comparison_list">		
+			<div id="list-comparison-areas">
+				<%if(areas.length>0){%>
+					<%_.each(areas, function(area){%>
+						<div class="panel panel-default">
+						  <div class="panel-body">
+							<%= area.name %>
+						  </div>
+						</div>					   
+					<%});%>
+				<%}%>	
+			</div>		
+		</script>
+		
+		<script type="text/template" id="tpl_comparison_list_modal">
+            <div class="modal fade" id="comparisonListModal" tabindex="-1" role="dialog" aria-labelledby="comparisonListLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="comparisonListLabel">Comparison Areas List</h4>
+                        </div>
+                        <div class="modal-body" id="tda_comparison_list"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>		
+		</script>
+
+		<script type="text/template" id="tpl_target_list_modal">
+            <div class="modal fade" id="targetListModal" tabindex="-1" role="dialog" aria-labelledby="targetListLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="targetListLabel">Target Areas List</h4>
+                        </div>
+                        <div class="modal-body" id="tda_target_list"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>		
+		</script>			
+		
+		<script type="text/template" id="tpl_tda_mapcontrol">
+            <div class="panel-heading">
+			    Map controls<i class="fa fa-chevron-down pull-right menu-state-button"></i>
+			</div>
+			<div class="panel-body menu-body">
+			    <label>Select area group</label>
+				<select class="form-control" id="selectedGroup" name="selectedGroup">
+				    <option value="comparison">Comparison Area</option>
+					<option value="target">Target Area</option>
+				</select>
+				<label>Select Layer</label>
+				<select class="form-control" name="selectedLayer" id="selectedLayer">
+				    <option value="sub">Suburbs</option>
+					<option value="lga" selected>Local Government Areas</option>
+					<option value="gccsa">Greater Capital City</option>
+		        </select>
+				<label>Enter a location</label>
+				<input type="text" class="form-control" placeholder="Enter your address" id="field-autocomplete"/>
+				<div class="row" style="margin-top:10px;">
+				    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" style="height: 34px;line-height: 34px;">
+					    <a href="javascript:void(0)" style="text-decoration:none;color:#000000;" id="btn-radiusmode-toggle">
+						    <i class="fa fa-toggle-off" style="font-size:25px;vertical-align:middle;"></i>
+						    <span style="margin-left:0px 0px 0px 5px;vertical-align:middle;">Radius mode</span>
+						</a>
+					</div>
+				    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				        <select class="form-control" name="selectedRadius" id="selectedRadius">
+				            <option value="3218">2 mi</option>
+					        <option value="8046">5 mi</option>
+					        <option value="16093">10 mi</option>
+					        <option value="24140">15 mi</option>
+					        <option value="32186">20 mi</option>
+				        </select>					
+					</div>					
+				</div>
+			</div>		
+		</script>
+		
+		<script type="text/template" id="tpl_tda_loader">
+			<div id="dataapp-map-blurred" class="item-loading"></div>
+			<div class="loader item-loading">Loading...</div>
+			<div class="loader-text item-loading" id="loader-text">Selecting</div>		
+		</script>
+
+        <script type="text/template" id="tpl_control_modal">
+            <div class="modal fade" id="mapControlsModal" tabindex="-1" role="dialog" aria-labelledby="MapControlLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="MapControlLabel">Map Controls</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label>Select area group</label>
+                            <select class="form-control" id="selectedGroup" name="selectedGroup">
+                                <%if(layerType == "comparison"){%>
+								    <option value="comparison" selected>Comparison Area</option>
+								<%}else{%>	
+								    <option value="comparison">Comparison Area</option>
+								<%}%>	
+								<%if(layerType == "target"){%>
+                                    <option value="target" selected>Target Area</option>
+								<%}else{%>
+								    <option value="target">Target Area</option>
+								<%}%>		
+                            </select>
+                            <label>Select Layer</label>
+                            <select class="form-control" name="selectedLayer" id="selectedLayer">
+                                <option value="sub">Suburbs</option>
+                                <option value="lga" selected>Local Government Areas</option>
+                                <option value="gccsa">Greater Capital City</option>
+                            </select>
+                            <label>Enter a location</label>
+                            <input type="text" class="form-control" placeholder="Enter your address" id="field-autocomplete"/>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" style="height: 34px;line-height: 34px;">
+                                    <a href="javascript:void(0)" style="text-decoration:none;color:#000000;" id="btn-radiusmode-toggle">
+                                        <i class="fa fa-toggle-off" style="font-size:17px;vertical-align:middle;"></i>
+                                        <span style="margin-left:0px 0px 0px 5px;vertical-align:middle;">Radius mode</span>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <select class="form-control" name="selectedRadius" id="selectedRadius">
+                                        <option value="3218">2 mi</option>
+                                        <option value="8046">5 mi</option>
+                                        <option value="16093">10 mi</option>
+                                        <option value="24140">15 mi</option>
+                                        <option value="32186">20 mi</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">DONE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+		<!-- SCRIPTS -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.9/backbone-min.js"></script>		
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="//maps.googleapis.com/maps/api/js?libraries=places"></script>
+        <script src='//api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+        <script src='//api.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.js'></script>
+		<script src="js/vendor/leaflet.utfgrid.js"></script>
+        <script src="js/vendor/easy-button.js"></script>
+        <script src="js/models.js"></script>
+		<script src="js/collections.js"></script>
+		<script src="js/views.js"></script>
+		
+		<script src="js/application.js"></script>
+
+    </body>
+</html>
